@@ -1,0 +1,105 @@
+package bm_Subscriotions;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
+
+public class Subscriptions_Filter {
+//---------------while click "Export" exception throwing------------------//
+		public static void main(String[] args) throws Exception {
+			System.setProperty("webdriver.chrome.driver", "C:\\Users\\kirub\\Desktop\\Selenium Files\\chromedriver_win32\\chromedriver.exe");
+			WebDriver driver=new ChromeDriver();
+			driver.manage().window().maximize();
+			driver.get("https://phpstack-783031-3067981.cloudwaysapps.com/public/admin/login");
+			WebElement username=driver.findElement(By.name("email"));
+			username.sendKeys("admin@arammilk.com");
+			WebElement password=driver.findElement(By.name("password"));
+			password.sendKeys("-_pPxRU#ex8Mgk3=");
+			WebElement loginbutton=driver.findElement(By.xpath("/html/body/div/div/div[1]/form/button"));
+			loginbutton.click();
+			Thread.sleep(3000);
+			//CLICK SUBSCRIPTIONS BUTTON
+			WebElement subscriptions=driver.findElement(By.xpath("/html/body/div[1]/div/div[1]/div[2]/div/div/div[1]/div[2]/div/div/div/ul/li[3]/a"));
+			subscriptions.click();
+			Thread.sleep(1000);
+			
+			WebElement start_date=driver.findElement(By.name("start_date"));
+			start_date.sendKeys("10-07-2023");
+			WebElement end_date=driver.findElement(By.name("end_date"));
+			end_date.sendKeys("18-07-2023");
+			//SELECT WAREHOUSE
+			Select warehouse=new Select(driver.findElement(By.name("warehouse_id")));
+			warehouse.selectByIndex(1);
+			Thread.sleep(1000);
+			//SELECT ZONE
+			Select zone=new Select(driver.findElement(By.name("zone_id")));
+			zone.selectByIndex(0);
+			Thread.sleep(1000);
+			//SELECT category
+			Select category=new Select(driver.findElement(By.name("category_id")));
+			category.selectByIndex(1);
+			Thread.sleep(1000);
+			//SELECT product
+			Select product=new Select(driver.findElement(By.name("product_id")));
+			product.selectByIndex(0);
+			Thread.sleep(1000);
+//			WebElement cus_name=driver.findElement(By.name("name"));
+//			cus_name.sendKeys("Sneha Nagendran");
+//			//SELECT status
+			Select status=new Select(driver.findElement(By.id("status-dropdown")));
+			status.selectByIndex(1);
+			Thread.sleep(1000);
+			//SELECT mode
+			Select subscription_mode=new Select(driver.findElement(By.name("subscription_mode")));
+			subscription_mode.selectByIndex(1);
+			Thread.sleep(1000);
+			
+			//CLICK SEARCH BUTTON
+			WebElement search=driver.findElement(By.xpath("/html/body/div[1]/div/div[2]/div[2]/div[1]/div/div/div[2]/div/div/div[1]/div/form/div/div[9]/div[1]/button"));
+			search.click();
+//			//CLICK RESET BUTTON
+//			WebElement reset=driver.findElement(By.xpath("/html/body/div[1]/div/div[2]/div[2]/div[1]/div/div/div[2]/div/div/div[1]/div/form/div/div[9]/div[2]/a"));
+//			reset.click();
+//			Thread.sleep(3000);
+//			//CLICK EXPORT BUTTON
+//			WebElement export=driver.findElement(By.xpath("/html/body/div[1]/div/div[2]/div[2]/div[1]/div/div/div[2]/div/div/div[1]/div/form/div/div[9]/div[3]/a"));
+//			export.click();
+			
+
+//			//IN CUSTOMER CLICK ACTION MENU
+//			WebElement action1=driver.findElement(By.xpath("/html/body/div[1]/div/div[2]/div[2]/div[1]/div/div/div[2]/div/div/div[2]/div/div[2]/div[12]/ul/li/div/a"));
+//			action1.click();
+//			Thread.sleep(4000);
+//			//VIEW DETAILS
+//			WebElement viewdetails=driver.findElement(By.xpath("/html/body/div[1]/div/div[2]/div[2]/div[1]/div/div/div[2]/div/div/div[2]/div/div[2]/div[12]/ul/li/div/div/ul/li[1]/a"));
+//			viewdetails.click();
+//			Thread.sleep(3000);
+//			driver.navigate().back();
+//			Thread.sleep(2000);
+//			//IN CUSTOMER CLICK ACTION MENU
+//			WebElement action2=driver.findElement(By.xpath("/html/body/div[1]/div/div[2]/div[2]/div[1]/div/div/div[2]/div/div/div[2]/div/div[2]/div[12]/ul/li/div/a"));
+//			action2.click();
+//			Thread.sleep(4000);
+//			//CLICK DELETE BUTTON
+//			WebElement delete=driver.findElement(By.xpath("/html/body/div[1]/div/div[2]/div[2]/div[1]/div/div/div[2]/div/div/div[2]/div/div[2]/div[12]/ul/li/div/div/ul/li[2]/a"));
+//			delete.click();
+//			Thread.sleep(2000);
+//			//CLICK DELETE OK BUTTON
+//			WebElement delete_ok=driver.findElement(By.xpath("/html/body/div[3]/div/div[4]/div[2]/button"));
+//			delete_ok.click();
+//			Thread.sleep(2000);
+//			//CLICK AFTER DELETE OK BUTTON
+//			WebElement deleted_ok=driver.findElement(By.xpath("/html/body/div[3]/div/div[4]/div/button"));
+//			deleted_ok.click();
+
+			Thread.sleep(4000);
+			driver.quit();
+			
+			
+			
+			
+	}
+
+}

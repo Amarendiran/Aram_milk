@@ -1,0 +1,44 @@
+package dashBoard;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Dashboard {
+
+	public static void main(String[] args) throws Exception {
+		System.setProperty("webdriver.chrome.driver", "C:\\Users\\kirub\\Desktop\\Selenium Files\\chromedriver_win32\\chromedriver.exe");
+		WebDriver driver=new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.get("https://phpstack-783031-3067981.cloudwaysapps.com/public/admin/login");
+		WebElement username=driver.findElement(By.name("email"));
+		username.sendKeys("admin@arammilk.com");
+		WebElement password=driver.findElement(By.name("password"));
+		password.sendKeys("-_pPxRU#ex8Mgk3=");
+		WebElement loginbutton=driver.findElement(By.xpath("/html/body/div/div/div[1]/form/button"));
+		loginbutton.click();
+		Thread.sleep(3000);
+		WebElement lowbalancelist=driver.findElement(By.xpath("/html/body/div[1]/div/div[2]/div[2]/div/div/div/div[2]/div/div[3]/div/div/a"));
+		lowbalancelist.click();
+		Thread.sleep(3000);
+		driver.navigate().back();
+		Thread.sleep(3000);
+		WebElement customercount=driver.findElement(By.xpath("//div[@class='drodown']"));
+		customercount.click();
+		((JavascriptExecutor)driver).executeScript("arguments[0].click();", driver.findElement(By.xpath("/html/body/div[1]/div/div[2]/div[2]/div/div/div/div[2]/div/div[5]/div/div/div[1]/div[2]/div/div/ul/li[2]/a"))); 
+		Thread.sleep(2000);
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript("window.scrollBy(0,1000)", "");
+		Thread.sleep(3000);
+		WebElement todayorders=driver.findElement(By.xpath("/html/body/div[1]/div/div[2]/div[2]/div/div/div/div[2]/div/div[17]/h6/a"));
+		todayorders.click();
+		Thread.sleep(3000);
+		driver.navigate().back();
+		
+		Thread.sleep(4000);
+		driver.quit();
+	}
+
+}

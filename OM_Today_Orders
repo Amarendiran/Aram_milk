@@ -1,0 +1,136 @@
+package order_management;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
+
+public class Today_ordes_all_functionalities {
+
+	public static void main(String[] args) throws Exception {
+
+		System.setProperty("webdriver.chrome.driver",
+				"C:\\Users\\kirub\\Desktop\\Selenium Files\\chromedriver_win32\\chromedriver.exe");
+		WebDriver driver = new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.get("https://phpstack-783031-3067981.cloudwaysapps.com/public/admin/login");
+		WebElement username = driver.findElement(By.name("email"));
+		username.sendKeys("admin@arammilk.com");
+		WebElement password = driver.findElement(By.name("password"));
+		password.sendKeys("-_pPxRU#ex8Mgk3=");
+		WebElement loginbutton = driver.findElement(By.xpath("/html/body/div/div/div[1]/form/button"));
+		loginbutton.click();
+		Thread.sleep(3000);
+		// CLICK Today orders BUTTON
+		WebElement today_orders = driver.findElement(
+				By.xpath("/html/body/div[1]/div/div[1]/div[2]/div/div/div[1]/div[2]/div/div/div/ul/li[8]/a"));
+		today_orders.click();
+		Thread.sleep(1000);
+
+		//		// Driver Dispatch
+		//		WebElement driverdispatch = driver.findElement(
+		//				By.xpath("/html/body/div[1]/div/div[2]/div[2]/div[1]/div/div/div[1]/div/div[2]/div/div/ul/li[1]/a"));
+		//		driverdispatch.click();
+		//		Thread.sleep(2000);
+		//		// AutoAssign delivery partners
+		//		WebElement autoassigndeliverypartners = driver.findElement(
+		//				By.xpath("/html/body/div[1]/div/div[2]/div[2]/div[1]/div/div/div[1]/div/div[2]/div/div/ul/li[2]/a"));
+		//		autoassigndeliverypartners.click();
+		//		Thread.sleep(2000);
+		//		// confirmation alert
+		//		WebElement autoassign_confirmation = driver.findElement(By.xpath("/html/body/div[3]/div/div[3]/div[2]/button"));
+		//		autoassign_confirmation.click();
+		//		Thread.sleep(2000);
+
+		// Filters
+		WebElement start_date = driver.findElement(By.name("start_date"));
+		start_date.sendKeys("10-07-2023");
+		WebElement end_date = driver.findElement(By.name("end_date"));
+		end_date.sendKeys("18-07-2023");
+		// SELECT WAREHOUSE
+		Select warehouse = new Select(driver.findElement(By.name("warehouse_id")));
+		warehouse.selectByIndex(1);
+		Thread.sleep(1000);
+		// SELECT ZONE
+		Select zone = new Select(driver.findElement(By.name("zone_id[]")));
+		zone.selectByIndex(1);
+		Thread.sleep(1000);
+		// select delivery partner
+		Select deliverypartner = new Select(driver.findElement(By.name("delivery_partner_id[]")));
+		deliverypartner.selectByIndex(1);
+		Thread.sleep(1000);
+		// SELECT category
+		Select category = new Select(driver.findElement(By.name("category_id")));
+		category.selectByIndex(1);
+		Thread.sleep(1000);
+		// SELECT product
+		Select product = new Select(driver.findElement(By.name("product_id")));
+		product.selectByIndex(0);
+		Thread.sleep(1000);
+		WebElement cus_name = driver.findElement(By.name("name"));
+		cus_name.sendKeys("Sneha Nagendran");
+		// SELECT status
+		Select status = new Select(driver.findElement(By.name("status")));
+		status.selectByIndex(2);
+		Thread.sleep(1000);
+		// SELECT method
+		Select subscription_method = new Select(driver.findElement(By.name("method")));
+		subscription_method.selectByIndex(1);
+		Thread.sleep(1000);
+		// SELECT delivery partner assign status
+		Select deliverypartnerassignstatus = new Select(driver.findElement(By.name("assign")));
+		deliverypartnerassignstatus.selectByIndex(1);
+		Thread.sleep(1000);
+
+		// CLICK SEARCH BUTTON
+		WebElement search = driver.findElement(By.xpath(
+				"/html/body/div[1]/div/div[2]/div[2]/div[1]/div/div/div[2]/div/div/div[1]/div/form/div/div[11]/div[1]/button"));
+		search.click();
+		//		// CLICK RESET BUTTON
+		//		WebElement reset = driver.findElement(By.xpath(
+		//				"/html/body/div[1]/div/div[2]/div[2]/div[1]/div/div/div[2]/div/div/div[1]/div/form/div/div[11]/div[2]/a"));
+		//		reset.click();
+		//		Thread.sleep(3000);
+		//
+		//		// bottle not received
+		//
+		//		WebElement bottle_received = driver.findElement(By.xpath(
+		//				"/html/body/div[1]/div/div[2]/div[2]/div[1]/div/div/div[2]/div/div/div[2]/div/div[2]/div[10]/a"));
+		//		bottle_received.click();
+		//		Thread.sleep(3000);
+		//
+		//		// received confirmation alert
+		//		WebElement click_ok = driver.findElement(By.xpath("/html/body/div[3]/div/div[3]/div[2]/button"));
+		//		click_ok.click();
+		//		Thread.sleep(1000);
+		//
+		//		// delivery partner assign
+		//		WebElement partner_assign = driver.findElement(By.xpath(
+		//				"/html/body/div[1]/div/div[2]/div[2]/div[1]/div/div/div[2]/div/div/div[2]/div/div[2]/div[11]/button"));
+		//		partner_assign.click();
+		//		Thread.sleep(1000);
+		//
+		//		// select delivery agent
+		//		Select delivery_agent = new Select(driver.findElement(By.name("delivery_id")));
+		//		delivery_agent.selectByIndex(1);
+		//		Thread.sleep(1000);
+		//
+		//		// click submit
+		//		WebElement submit = driver.findElement(By.xpath("//*[@id=\"addDelivery\"]/div[3]/button"));
+		//		submit.click();
+		//		Thread.sleep(1000);
+		//
+		//		// Select Action menu
+		//		Select action = new Select(driver.findElement(By.id("status0")));
+		//		action.selectByIndex(1);
+		//		Thread.sleep(1000);
+		//
+		//		// confirmation alert
+		//		WebElement status_confirmation = driver.findElement(By.xpath("/html/body/div[3]/div/div[3]/div[2]/button"));
+		//		status_confirmation.click();
+		Thread.sleep(4000);
+		driver.quit();
+	}
+
+}

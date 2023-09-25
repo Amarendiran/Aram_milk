@@ -1,0 +1,51 @@
+package dm_Delivery_zone;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
+
+public class Zone_filter {
+
+	public static void main(String[] args) throws Exception {
+		System.setProperty("webdriver.chrome.driver",
+				"C:\\Users\\kirub\\Desktop\\Selenium Files\\chromedriver_win32\\chromedriver.exe");
+		WebDriver driver = new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.get("https://phpstack-783031-3067981.cloudwaysapps.com/public/admin/login");
+		WebElement username = driver.findElement(By.name("email"));
+		username.sendKeys("admin@arammilk.com");
+		WebElement password = driver.findElement(By.name("password"));
+		password.sendKeys("-_pPxRU#ex8Mgk3=");
+		WebElement loginbutton = driver.findElement(By.xpath("/html/body/div/div/div[1]/form/button"));
+		loginbutton.click();
+		Thread.sleep(3000);
+		// CLICK SUBSCRIPTIONS BUTTON
+		WebElement delivery_zone = driver.findElement(
+				By.xpath("/html/body/div/div[1]/div[1]/div[2]/div/div/div[1]/div[2]/div/div/div/ul/li[26]/a"));
+		delivery_zone.click();
+		Thread.sleep(2000);
+		
+		Select warehouse = new Select(driver.findElement(By.id("warehouse-dropdown")));
+		warehouse.selectByIndex(2);
+		Thread.sleep(1000);
+//		Select zone = new Select(driver.findElement(By.name("zone_id")));
+//		zone.selectByIndex(1);
+//		Thread.sleep(2000);
+		Select status = new Select(driver.findElement(By.name("status")));
+		status.selectByIndex(1);
+		Thread.sleep(2000);
+		WebElement search = driver.findElement(
+				By.xpath("/html/body/div/div[1]/div[2]/div[2]/div[1]/div[1]/div/div[2]/div/div[3]/div[1]/div/form/div/div[4]/div/button"));
+		search.click();
+		Thread.sleep(3000);
+		WebElement reset = driver.findElement(
+				By.xpath("/html/body/div/div[1]/div[2]/div[2]/div[1]/div[1]/div/div[2]/div/div[3]/div[1]/div/form/div/div[4]/div/a"));
+		reset.click();
+		
+		Thread.sleep(4000);
+		driver.quit();
+	}
+
+}

@@ -1,0 +1,79 @@
+package iv_Product;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.Select;
+
+public class Add_Product {
+
+	public static void main(String[] args) throws Exception {
+		System.setProperty("webdriver.chrome.driver",
+				"C:\\Users\\kirub\\Desktop\\Selenium Files\\chromedriver_win32\\chromedriver.exe");
+		WebDriver driver = new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.get("https://phpstack-783031-3067981.cloudwaysapps.com/public/admin/login");
+		WebElement username = driver.findElement(By.name("email"));
+		username.sendKeys("admin@arammilk.com");
+		WebElement password = driver.findElement(By.name("password"));
+		password.sendKeys("-_pPxRU#ex8Mgk3=");
+		WebElement loginbutton = driver.findElement(By.xpath("/html/body/div/div/div[1]/form/button"));
+		loginbutton.click();
+		Thread.sleep(3000);
+		// CLICK order report
+		WebElement product = driver.findElement(
+				By.xpath("/html/body/div[1]/div/div[1]/div[2]/div/div/div[1]/div[2]/div/div/div/ul/li[17]/a"));
+		product.click();
+		Thread.sleep(1000);
+
+		// add new category
+		WebElement add_new = driver.findElement(By.xpath("/html/body/div[1]/div/div[2]/div[2]/div[1]/div/h3/a"));
+		add_new.click();
+		Thread.sleep(2000);
+
+		WebElement name = driver.findElement(By.name("name"));
+		name.sendKeys("Butter");
+		// SELECT parent category
+		Select parent_category = new Select(driver.findElement(By.name("category_id")));
+		parent_category.selectByIndex(1);
+		Thread.sleep(000);
+		// SELECT parent category
+		Select product_type = new Select(driver.findElement(By.name("product_type")));
+		product_type.selectByIndex(1);
+		Thread.sleep(1000);
+
+		// upload image
+		WebElement upload_image1 = driver.findElement(By.xpath("//input[@name='image']"));
+		upload_image1.sendKeys("C:\\Users\\kirub\\Desktop\\Projects\\Aram Milk\\Aram Images\\butter.jpeg");
+		Thread.sleep(2000);
+		
+		// Product short description
+//		WebElement short_desc = driver.findElement(By.xpath("//*[@id=\"tinymce\"]"));
+//		short_desc.click();
+//		short_desc.sendKeys("butter");
+//		// Product Long description
+//		WebElement long_desc = driver.findElement(By.xpath("//*[@id=\"mce_2_ifr\"]"));
+//		long_desc.click();
+//		long_desc.sendKeys("butter");
+//		Thread.sleep(1000);
+		//Stock active/inactive
+		WebElement stock_active = driver.findElement(By.id("outstock"));
+		Actions actions1 = new Actions(driver);
+		actions1.moveToElement(stock_active).click().build().perform();
+
+		//Stock active/inactive
+		WebElement status_active = driver.findElement(By.id("InActive"));
+		Actions actions2 = new Actions(driver);
+		actions2.moveToElement(status_active).click().build().perform();
+		
+		//add product 
+		Thread.sleep(3000);
+		WebElement add_product = driver.findElement(By.xpath("//*[@id=\"series-form\"]/div/div[9]/div/button"));
+		add_product.click();
+		Thread.sleep(4000);
+		driver.quit();
+	}
+
+}

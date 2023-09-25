@@ -1,0 +1,50 @@
+package dpm_Delivery_Partners;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
+
+public class Delivery_Partner_Filter {
+
+	public static void main(String[] args) throws InterruptedException {
+		System.setProperty("webdriver.chrome.driver",
+				"C:\\Users\\kirub\\Desktop\\Selenium Files\\chromedriver_win32\\chromedriver.exe");
+		WebDriver driver = new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.get("https://phpstack-783031-3067981.cloudwaysapps.com/public/admin/login");
+		WebElement username = driver.findElement(By.name("email"));
+		username.sendKeys("admin@arammilk.com");
+		WebElement password = driver.findElement(By.name("password"));
+		password.sendKeys("-_pPxRU#ex8Mgk3=");
+		WebElement loginbutton = driver.findElement(By.xpath("/html/body/div/div/div[1]/form/button"));
+		loginbutton.click();
+		Thread.sleep(3000);
+		// CLICK SUBSCRIPTIONS BUTTON
+		WebElement delivery_partners = driver.findElement(
+				By.xpath("/html/body/div[1]/div/div[1]/div[2]/div/div/div[1]/div[2]/div/div/div/ul/li[29]/a"));
+		delivery_partners.click();
+		
+		Select warehouse = new Select(driver.findElement(By.name("warehouse_id")));
+		warehouse.selectByIndex(1);
+		Thread.sleep(2000);
+		Select product = new Select(driver.findElement(By.id("zone-dropdown")));
+		product.selectByIndex(2);
+		WebElement deliver_partner_name = driver.findElement(By.name("name"));
+		deliver_partner_name.sendKeys("Arumugam");
+		WebElement email = driver.findElement(By.name("email"));
+		email.sendKeys("arumugam@arammilk.com");
+		Select warehouse1 = new Select(driver.findElement(By.name("warehouse_id")));
+		warehouse.selectByIndex(1);
+		WebElement submit = driver.findElement(By.xpath("//*[@id=\"agent-form\"]/div/div[11]/div/button"));
+		submit.click();
+		WebElement submit1 = driver.findElement(By.xpath("//*[@id=\"agent-form\"]/div/div[11]/div/button"));
+		submit.click();
+		
+		Thread.sleep(4000);
+		driver.quit();
+	
+	}
+
+}

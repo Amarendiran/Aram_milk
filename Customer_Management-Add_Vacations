@@ -1,0 +1,69 @@
+package cm_Vacations;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Add_Vacation {
+
+	public static void main(String[] args) throws InterruptedException {
+		System.setProperty("webdriver.chrome.driver",
+				"C:\\Users\\kirub\\Desktop\\Selenium Files\\chromedriver_win32\\chromedriver.exe");
+		WebDriver driver = new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.get("https://phpstack-783031-3067981.cloudwaysapps.com/public/admin/login");
+		WebElement username = driver.findElement(By.name("email"));
+		username.sendKeys("admin@arammilk.com");
+		WebElement password = driver.findElement(By.name("password"));
+		password.sendKeys("-_pPxRU#ex8Mgk3=");
+		WebElement loginbutton = driver.findElement(By.xpath("/html/body/div/div/div[1]/form/button"));
+		loginbutton.click();
+		Thread.sleep(3000);
+
+		WebElement vacations = driver.findElement(By.linkText("Vacations"));
+		vacations.click();
+		Thread.sleep(2000);
+
+		WebElement add_vacations = driver.findElement(By.linkText("Add"));
+		add_vacations.click();
+		Thread.sleep(1000);
+
+		// search username
+		WebElement search_username = driver.findElement(By.xpath("//*[@id=\"vacationAddForm\"]/div[1]/div/div/span"));
+		search_username.click();
+		Thread.sleep(1000);
+
+		// search name
+		WebElement search_name = driver.findElement(By.xpath("/html/body/span/span/span[1]/input"));
+		search_name.click();
+		Thread.sleep(1000);
+		
+		WebElement search_name1 = driver.findElement(By.xpath("/html/body/span/span/span[1]/input"));
+		search_name1.sendKeys("amar");
+		Thread.sleep(1000);
+		
+		WebElement select_name = driver.findElement(By.xpath("//*[@id=\"select2-searchName-results\"]/li[3]"));
+		select_name.click();
+		Thread.sleep(1000);
+		
+
+		WebElement start_date=driver.findElement(By.id("start_date"));
+		start_date.clear();
+		start_date.sendKeys("2023-07-30");
+		Thread.sleep(1000);
+
+		WebElement end_date=driver.findElement(By.id("end_date"));
+		end_date.sendKeys("2023-08-02");
+		
+		Thread.sleep(1000);
+
+		WebElement ajaxSubmit = driver.findElement(By.id("ajaxSubmit"));
+		ajaxSubmit.click();
+		
+		Thread.sleep(4000);
+		driver.quit();
+
+	}
+
+}

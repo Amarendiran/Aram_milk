@@ -1,0 +1,54 @@
+package dm_Warehouse;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Edit_warehouse {
+
+	public static void main(String[] args) throws Exception {
+		System.setProperty("webdriver.chrome.driver",
+				"C:\\Users\\kirub\\Desktop\\Selenium Files\\chromedriver_win32\\chromedriver.exe");
+		WebDriver driver = new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.get("https://phpstack-783031-3067981.cloudwaysapps.com/public/admin/login");
+		WebElement username = driver.findElement(By.name("email"));
+		username.sendKeys("admin@arammilk.com");
+		WebElement password = driver.findElement(By.name("password"));
+		password.sendKeys("-_pPxRU#ex8Mgk3=");
+		WebElement loginbutton = driver.findElement(By.xpath("/html/body/div/div/div[1]/form/button"));
+		loginbutton.click();
+		Thread.sleep(3000);
+		// CLICK SUBSCRIPTIONS BUTTON
+		WebElement warehouse = driver.findElement(
+				By.xpath("/html/body/div[1]/div/div[1]/div[2]/div/div/div[1]/div[2]/div/div/div/ul/li[25]/a"));
+		warehouse.click();
+
+		WebElement edit_warehouse = driver.findElement(By.xpath("/html/body/div[1]/div/div[2]/div[2]/div[1]/div/div/div[2]/div/div/div[1]/div/div[2]/div[6]/span/a"));
+		edit_warehouse.click();
+		Thread.sleep(1000);
+		WebElement location_name = driver.findElement(By.xpath("//*[@id=\"name\"]"));
+		location_name.clear();
+		Thread.sleep(1000);
+		location_name.sendKeys("Coimbatore");
+		Thread.sleep(1000);
+
+		WebElement lat = driver.findElement(By.name("lat"));
+		lat.clear();
+		Thread.sleep(1000);
+		lat.sendKeys("11.01413739943179");
+		Thread.sleep(1000);
+
+		WebElement lon = driver.findElement(By.name("lon"));
+		lon.clear();
+		Thread.sleep(1000);
+		lon.sendKeys("76.96414509508564");
+		Thread.sleep(2000);
+		WebElement submit = driver.findElement(By.id("ajaxUpdate"));
+		submit.click();
+		Thread.sleep(4000);
+		driver.quit();
+	}
+
+}

@@ -1,0 +1,81 @@
+package iv_category;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.Select;
+
+public class Add_new {
+
+	public static void main(String[] args) throws Exception {
+		System.setProperty("webdriver.chrome.driver",
+				"C:\\Users\\kirub\\Desktop\\Selenium Files\\chromedriver_win32\\chromedriver.exe");
+		WebDriver driver = new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.get("https://phpstack-783031-3067981.cloudwaysapps.com/public/admin/login");
+		WebElement username = driver.findElement(By.name("email"));
+		username.sendKeys("admin@arammilk.com");
+		WebElement password = driver.findElement(By.name("password"));
+		password.sendKeys("-_pPxRU#ex8Mgk3=");
+		WebElement loginbutton = driver.findElement(By.xpath("/html/body/div/div/div[1]/form/button"));
+		loginbutton.click();
+		Thread.sleep(3000);
+		// CLICK order report
+		WebElement category = driver.findElement(
+				By.xpath("/html/body/div[1]/div/div[1]/div[2]/div/div/div[1]/div[2]/div/div/div/ul/li[16]/a"));
+		category.click();
+		Thread.sleep(1000);
+
+		// add new category
+		WebElement add_new = driver.findElement(By.id("addNewModalToggle"));
+		add_new.click();
+		Thread.sleep(2000);
+
+		WebElement name = driver.findElement(By.name("name"));
+		name.sendKeys("Boiled Butter");
+		// SELECT parent category
+		Select parent_category = new Select(driver.findElement(By.name("parent_id")));
+		parent_category.selectByIndex(1);
+		Thread.sleep(000);
+
+		// upload image
+		WebElement upload_image1 = driver.findElement(By.xpath("//input[@name='image']"));
+		upload_image1.sendKeys("C:\\Users\\kirub\\Desktop\\Projects\\Aram Milk\\Aram Images\\butter.jpeg");
+		Thread.sleep(2000);
+		// upload icon
+		WebElement upload_image2 = driver.findElement(By.xpath("//input[@name='icon']"));
+		upload_image2.sendKeys("C:\\Users\\kirub\\Desktop\\Projects\\Aram Milk\\Aram Images\\butter.jpeg");
+		// slug
+		WebElement slug = driver.findElement(By.name("slug"));
+		slug.sendKeys("butter");
+		// meta title
+		WebElement meta_title = driver.findElement(By.xpath("//*[@id=\"series-form\"]/div/div[6]/div/div/input"));
+		meta_title.sendKeys("butter");
+		// meta keywords
+		WebElement meta_keyword = driver.findElement(By.name("meta_keywords"));
+		meta_keyword.sendKeys("butter");
+		// meta description
+		WebElement meta_description = driver.findElement(By.name("meta_description"));
+		meta_description.sendKeys("butter");
+		Thread.sleep(2000);
+		// status active
+//		WebElement status_active = driver.findElement(By.id("InActive"));
+//		status_active.click();
+		
+		WebElement status_active = driver.findElement(By.id("Active"));
+		Actions actions = new Actions(driver); 
+		actions.moveToElement(status_active).click().build().perform();
+
+
+		
+		Thread.sleep(3000);
+		WebElement submit = driver.findElement(By.xpath("//*[@id=\"series-form\"]/div/div[10]/div/button"));
+		submit.click();
+		Thread.sleep(4000);
+		driver.quit();
+
+	}
+
+}

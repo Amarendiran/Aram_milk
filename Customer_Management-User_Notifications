@@ -1,0 +1,100 @@
+package cm_UserNotifications;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Add_notifications {
+
+	public static void main(String[] args) throws Exception {
+		System.setProperty("webdriver.chrome.driver",
+				"C:\\Users\\kirub\\Desktop\\Selenium Files\\chromedriver_win32\\chromedriver.exe");
+		WebDriver driver = new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.get("https://phpstack-783031-3067981.cloudwaysapps.com/public/admin/login");
+		WebElement username = driver.findElement(By.name("email"));
+		username.sendKeys("admin@arammilk.com");
+		WebElement password = driver.findElement(By.name("password"));
+		password.sendKeys("-_pPxRU#ex8Mgk3=");
+		WebElement loginbutton = driver.findElement(By.xpath("/html/body/div/div/div[1]/form/button"));
+		loginbutton.click();
+		Thread.sleep(3000);
+
+		WebElement notifications = driver.findElement(
+				By.xpath("/html/body/div[1]/div/div[1]/div[2]/div/div/div[1]/div[2]/div/div/div/ul/li[20]/a"));
+		notifications.click();
+		Thread.sleep(2000);
+
+		// add notifications
+		WebElement add_notifications = driver.findElement(By.xpath("//*[@id=\"add\"]"));
+		add_notifications.click();
+		Thread.sleep(1000);
+
+		WebElement subject = driver.findElement(By.name("subject"));
+		subject.sendKeys("High Quality Milk");
+		Thread.sleep(1000);
+		// upload image
+		WebElement upload_image1 = driver.findElement(By.xpath("//*[@id=\"image\"]"));
+		upload_image1.sendKeys("C:\\Users\\kirub\\Desktop\\Projects\\Aram Milk\\Aram Images\\butter.jpeg");
+		Thread.sleep(2000);
+
+		WebElement message = driver.findElement(By.name("message"));
+		message.sendKeys("High Quality Milk in oneplace. India No-1 Milk supplier");
+		Thread.sleep(1000);
+		// cancel button
+//		WebElement cancel = driver.findElement(By.xpath("//*[@id=\"notificationAddForm\"]/div[4]/button[1]"));
+//		cancel.click();
+//		Thread.sleep(1000);
+		// save button
+		WebElement save = driver.findElement(By.xpath("//*[@id=\"notificationAddForm\"]/div[4]/button[2]"));
+		save.click();
+
+		// ----------------------------------------------------------------------------------------------
+		// Edit
+//		WebElement edit = driver.findElement(By.xpath("/html/body/div[1]/div/div[2]/div[2]/div[1]/div/div/div[2]/div/div/div/div/div[3]/div[5]/span/a[1]"));
+//		edit.click();
+//		Thread.sleep(1000);
+//		
+//		WebElement edit_subject = driver.findElement(By.name("subject"));
+//		edit_subject.sendKeys("High Quality Milk");
+//		Thread.sleep(1000);
+//		// upload image
+//		WebElement edit_upload_image1 = driver.findElement(By.xpath("/html/body/div[1]/div/div[2]/div[2]/div/div/div/div/div/div/form/div[2]/div[2]/input"));
+//		edit_upload_image1.sendKeys("C:\\Users\\kirub\\Desktop\\Projects\\Aram Milk\\Aram Images\\butter.jpeg");
+//		Thread.sleep(2000);
+//
+//		WebElement edit_message = driver.findElement(By.name("message"));
+//		edit_message.sendKeys("High Quality Milk in oneplace. India No-1 Milk supplier");
+//		Thread.sleep(1000);
+//		//cancel button
+////		WebElement edit_cancel = driver.findElement(By.xpath("//*[@id=\"notificationAddForm\"]/div[4]/button[1]"));
+////		edit_cancel.click();
+////		Thread.sleep(1000);
+//		//save button
+//		WebElement update = driver.findElement(By.xpath("/html/body/div[1]/div/div[2]/div[2]/div/div/div/div/div/div/form/div[3]/button"));
+//		update.click();
+
+		// ---------------------------------------------------------------------------------------
+		// click send button
+//		WebElement send = driver.findElement(By.linkText("Send"));
+//		send.click();
+//		Thread.sleep(1000);
+//		// alert
+//		WebElement confirmation_alert = driver.findElement(By.xpath("/html/body/div[3]/div/div[3]/div[2]/button"));
+//		confirmation_alert.click();
+//		Thread.sleep(2000);
+//		// click send to admin
+//		WebElement send_admin = driver.findElement(By.linkText("Send to Admin"));
+//		send_admin.click();
+//		Thread.sleep(1000);
+//		// alert
+//		WebElement confirmation_alert1 = driver.findElement(By.xpath("/html/body/div[3]/div/div[3]/div[2]/button"));
+//		confirmation_alert1.click();
+//		Thread.sleep(2000);
+		Thread.sleep(4000);
+		driver.quit();
+
+	}
+
+}

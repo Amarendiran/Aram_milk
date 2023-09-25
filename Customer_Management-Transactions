@@ -1,0 +1,58 @@
+package cm_Transactions;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
+
+public class Transactions {
+
+	public static void main(String[] args) throws Exception {
+		System.setProperty("webdriver.chrome.driver",
+				"C:\\Users\\kirub\\Desktop\\Selenium Files\\chromedriver_win32\\chromedriver.exe");
+		WebDriver driver = new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.get("https://phpstack-783031-3067981.cloudwaysapps.com/public/admin/login");
+		WebElement username = driver.findElement(By.name("email"));
+		username.sendKeys("admin@arammilk.com");
+		WebElement password = driver.findElement(By.name("password"));
+		password.sendKeys("-_pPxRU#ex8Mgk3=");
+		WebElement loginbutton = driver.findElement(By.xpath("/html/body/div/div/div[1]/form/button"));
+		loginbutton.click();
+		Thread.sleep(3000);
+		// CLICK SUBSCRIPTIONS BUTTON
+		WebElement transactions = driver.findElement(
+				By.xpath("/html/body/div[1]/div/div[1]/div[2]/div/div/div[1]/div[2]/div/div/div/ul/li[22]/a"));
+		transactions.click();
+		Thread.sleep(1000);
+
+		Select credit_debit = new Select(driver.findElement(By.id("transaction-dropdown")));
+		credit_debit.selectByIndex(1);
+		Thread.sleep(1000);
+		WebElement name = driver.findElement(By.name("name"));
+		name.sendKeys("amar");
+		WebElement phone_no = driver.findElement(By.name("phone_no"));
+		phone_no.sendKeys("9488617831");
+		Select warehouse = new Select(driver.findElement(By.name("status")));
+		warehouse.selectByIndex(2);
+		Thread.sleep(1000);
+		WebElement search = driver.findElement(By.xpath("/html/body/div[1]/div/div[2]/div[2]/div[1]/div/div/div[2]/div/div/div[1]/div/form/div/div[5]/button"));
+		search.click();
+		Thread.sleep(1000);
+		WebElement export = driver.findElement(By.xpath("/html/body/div[1]/div/div[2]/div[2]/div[1]/div/div/div[2]/div/div/div[1]/div/div/a"));
+		export.click();
+		
+		//view eye icon
+		WebElement view_eye = driver.findElement(By.xpath("/html/body/div[1]/div/div[2]/div[2]/div[1]/div/div/div[2]/div/div/div[2]/div/div[2]/div[9]/a"));
+		view_eye.click();
+		Thread.sleep(3000);
+		//close the transaction details
+		WebElement close = driver.findElement(By.xpath("//*[@id=\"tranxDetails\"]/div/div/a"));
+		close.click();
+		Thread.sleep(4000);
+		driver.quit();
+		
+	}
+
+}

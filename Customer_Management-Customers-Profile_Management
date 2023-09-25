@@ -1,0 +1,79 @@
+package cm_Customers;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Profile_Information {
+
+	public static void main(String[] args) throws Exception {
+		System.setProperty("webdriver.chrome.driver", "C:\\Users\\kirub\\Desktop\\Selenium Files\\chromedriver_win32\\chromedriver.exe");
+		WebDriver driver=new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.get("https://phpstack-783031-3067981.cloudwaysapps.com/public/admin/login");
+		WebElement username=driver.findElement(By.name("email"));
+		username.sendKeys("admin@arammilk.com");
+		WebElement password=driver.findElement(By.name("password"));
+		password.sendKeys("-_pPxRU#ex8Mgk3=");
+		WebElement loginbutton=driver.findElement(By.xpath("/html/body/div/div/div[1]/form/button"));
+		loginbutton.click();
+		Thread.sleep(3000);
+		WebElement customers=driver.findElement(By.xpath("/html/body/div[1]/div/div[1]/div[2]/div/div/div[1]/div[2]/div/div/div/ul/li[19]/a"));
+		customers.click();
+		Thread.sleep(1000);
+		WebElement customerclick=driver.findElement(By.xpath("/html/body/div[1]/div/div[2]/div[2]/div/div/div/div[2]/div/div/div[2]/div/div[2]/div[2]/a"));
+		customerclick.click();
+		WebElement profileinformation=driver.findElement(By.xpath("/html/body/div[1]/div/div[2]/div[2]/div[1]/div/div/div/div/div/div/div[2]/div/div[1]/div[2]/div/div/div/div[3]/ul/li[1]/a"));
+		profileinformation.click();
+		Thread.sleep(1000);
+		WebElement updatepersonal1=driver.findElement(By.xpath("/html/body/div[1]/div/div[2]/div[2]/div[1]/div/div/div/div/div/div/div[1]/div[2]/div/div[2]/div[1]/span[1]"));
+		updatepersonal1.click();
+		Thread.sleep(2000);
+		WebElement personal=driver.findElement(By.xpath("//*[@id=\"profile-edit\"]/div/div/div/ul/li[1]/a"));
+		personal.click();
+		WebElement fullname=driver.findElement(By.id("full-name"));
+		fullname.clear();
+		fullname.sendKeys("Venki");
+		Thread.sleep(4000);
+		WebElement updateprofilebutton1=driver.findElement(By.xpath("//*[@id=\"profileForm\"]/div/div[4]/ul/li[1]/button"));
+		updateprofilebutton1.click();
+		Thread.sleep(2000);
+		driver.navigate().refresh();
+		Thread.sleep(2000);
+		WebElement updatepersonal2=driver.findElement(By.xpath("/html/body/div[1]/div/div[2]/div[2]/div[1]/div/div/div/div/div/div/div[1]/div[2]/div/div[2]/div[1]/span[1]"));
+		updatepersonal2.click();
+		Thread.sleep(2000);
+		WebElement updateaddress=driver.findElement(By.xpath("//*[@id=\"profile-edit\"]/div/div/div/ul/li[2]/a"));		
+		updateaddress.click();
+		Thread.sleep(2000);
+		WebElement addressline1=driver.findElement(By.name("address1"));
+		addressline1.clear();
+		addressline1.click();
+		addressline1.sendKeys("CodeTez,Janaki complex, Sardar Patel Road, Adyar.");
+		WebElement addressline2=driver.findElement(By.name("address2"));
+		addressline2.clear();
+		addressline2.click();
+		addressline2.sendKeys("Chennai, Tamilnadu");
+		WebElement addressline3=driver.findElement(By.name("address3"));
+		addressline3.clear();
+		addressline3.click();
+		addressline3.sendKeys("Near Metro Shoes");
+		WebElement latitude=driver.findElement(By.name("lat"));
+		latitude.clear();
+		latitude.click();
+		latitude.sendKeys("12.965972720635");
+		WebElement longitude=driver.findElement(By.name("lon"));
+		longitude.clear();
+		longitude.click();
+		longitude.sendKeys("80.160330478102");
+		Thread.sleep(4000);
+		WebElement updateprofilebutton2=driver.findElement(By.xpath("//*[@id=\"addressForm\"]/div/div[6]/ul/li[1]/button"));
+		updateprofilebutton2.click();
+		
+		Thread.sleep(4000);
+		driver.quit();
+		
+	}
+
+}

@@ -1,0 +1,64 @@
+package dpm_Delivery_Partners;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
+
+public class Add_delivery_partners {
+
+	public static void main(String[] args) throws Exception {
+		System.setProperty("webdriver.chrome.driver",
+				"C:\\Users\\kirub\\Desktop\\Selenium Files\\chromedriver_win32\\chromedriver.exe");
+		WebDriver driver = new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.get("https://phpstack-783031-3067981.cloudwaysapps.com/public/admin/login");
+		WebElement username = driver.findElement(By.name("email"));
+		username.sendKeys("admin@arammilk.com");
+		WebElement password = driver.findElement(By.name("password"));
+		password.sendKeys("-_pPxRU#ex8Mgk3=");
+		WebElement loginbutton = driver.findElement(By.xpath("/html/body/div/div/div[1]/form/button"));
+		loginbutton.click();
+		Thread.sleep(3000);
+		// CLICK SUBSCRIPTIONS BUTTON
+		WebElement delivery_partners = driver.findElement(
+				By.xpath("/html/body/div[1]/div/div[1]/div[2]/div/div/div[1]/div[2]/div/div/div/ul/li[29]/a"));
+		delivery_partners.click();
+		
+		WebElement add = driver.findElement(By.xpath("/html/body/div[1]/div/div[2]/div[2]/div/div/div/div[1]/div/div[2]/div/div/ul/li/a"));
+		add.click();
+		Thread.sleep(1000);
+		WebElement deliver_partner_name = driver.findElement(By.name("name"));
+		deliver_partner_name.sendKeys("Arumugam");
+		WebElement email = driver.findElement(By.name("email"));
+		email.sendKeys("arumugam@arammilk.com");
+		WebElement dob = driver.findElement(By.name("dob"));
+		dob.sendKeys("1995-05-07");
+		WebElement phone = driver.findElement(By.name("phone"));
+		phone.sendKeys("9874563210");
+		WebElement address1 = driver.findElement(By.name("address1"));
+		address1.sendKeys("Address");
+		WebElement address2 = driver.findElement(By.name("address2"));
+		address2.sendKeys("address2");
+		WebElement address3 = driver.findElement(By.name("address3"));
+		address3.sendKeys("address3");
+		WebElement upload_image1 = driver.findElement(By.xpath("//*[@id=\"agent-form\"]/div/div[8]/div/div/input"));
+		upload_image1.sendKeys("C:\\Users\\kirub\\Desktop\\Projects\\Aram Milk\\Aram Images\\butter.jpeg");
+		Thread.sleep(2000);
+		Select warehouse = new Select(driver.findElement(By.name("warehouse_id")));
+		warehouse.selectByIndex(1);
+		Thread.sleep(2000);
+		Select product = new Select(driver.findElement(By.id("zone-dropdown")));
+		product.selectByIndex(2);
+		product.selectByIndex(3);
+		product.selectByIndex(4);
+		product.selectByIndex(5);
+		Thread.sleep(3000);
+		WebElement submit = driver.findElement(By.xpath("//*[@id=\"agent-form\"]/div/div[11]/div/button"));
+		submit.click();
+		Thread.sleep(4000);
+		driver.quit();
+	}
+
+}

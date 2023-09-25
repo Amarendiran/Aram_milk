@@ -1,0 +1,72 @@
+package cm_Vacations;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Vacation_filter_and_Action {
+
+	public static void main(String[] args) throws Exception {
+		System.setProperty("webdriver.chrome.driver",
+				"C:\\Users\\kirub\\Desktop\\Selenium Files\\chromedriver_win32\\chromedriver.exe");
+		WebDriver driver = new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.get("https://phpstack-783031-3067981.cloudwaysapps.com/public/admin/login");
+		WebElement username = driver.findElement(By.name("email"));
+		username.sendKeys("admin@arammilk.com");
+		WebElement password = driver.findElement(By.name("password"));
+		password.sendKeys("-_pPxRU#ex8Mgk3=");
+		WebElement loginbutton = driver.findElement(By.xpath("/html/body/div/div/div[1]/form/button"));
+		loginbutton.click();
+		Thread.sleep(3000);
+
+		WebElement vacations = driver.findElement(By.linkText("Vacations"));
+		vacations.click();
+		Thread.sleep(2000);
+
+		WebElement start_date = driver.findElement(By.id("start"));
+		start_date.clear();
+		start_date.sendKeys("30-07-2023");
+		Thread.sleep(1000);
+
+		WebElement end_date = driver.findElement(By.id("end"));
+		end_date.sendKeys("05-08-2023");
+
+		WebElement name = driver.findElement(By.id("name"));
+		name.sendKeys("amar");
+		Thread.sleep(1000);
+
+		WebElement phone_number = driver.findElement(By.id("phone_no"));
+		phone_number.sendKeys("9488617831");
+		Thread.sleep(1000);
+
+		WebElement search = driver.findElement(By.xpath(
+				"/html/body/div[1]/div/div[2]/div[2]/div[1]/div/div/div[2]/div/div/div[1]/div/form/div/div[4]/button"));
+		search.click();
+		
+		
+		Thread.sleep(3000);
+
+		// -------------------------------------------------------------------------------------
+		// Action
+		WebElement action = driver.findElement(By.xpath(
+				"/html/body/div[1]/div/div[2]/div[2]/div[1]/div/div/div[2]/div/div/div[2]/div/div[2]/div[5]/ul/li/div/a"));
+		action.click();
+		
+		Thread.sleep(2000);
+		WebElement view = driver.findElement(By.xpath(
+				"/html/body/div[1]/div/div[2]/div[2]/div[1]/div/div/div[2]/div/div/div[2]/div/div[2]/div[5]/ul/li/div/div/ul/li/a"));
+		view.click();
+
+		Thread.sleep(2000);
+		driver.navigate().back();
+		Thread.sleep(2000);
+		driver.navigate().back();
+		Thread.sleep(4000);
+		driver.quit();
+
+
+	}
+
+}

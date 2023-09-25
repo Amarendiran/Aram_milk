@@ -1,0 +1,158 @@
+package iv_Product;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
+
+public class Edit_Product {
+
+	public static void main(String[] args) throws Exception {
+		System.setProperty("webdriver.chrome.driver",
+				"C:\\Users\\kirub\\Desktop\\Selenium Files\\chromedriver_win32\\chromedriver.exe");
+		WebDriver driver = new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.get("https://phpstack-783031-3067981.cloudwaysapps.com/public/admin/login");
+		WebElement username = driver.findElement(By.name("email"));
+		username.sendKeys("admin@arammilk.com");
+		WebElement password = driver.findElement(By.name("password"));
+		password.sendKeys("-_pPxRU#ex8Mgk3=");
+		WebElement loginbutton = driver.findElement(By.xpath("/html/body/div/div/div[1]/form/button"));
+		loginbutton.click();
+		Thread.sleep(3000);
+		// CLICK Product
+		WebElement product = driver.findElement(
+				By.xpath("/html/body/div[1]/div/div[1]/div[2]/div/div/div[1]/div[2]/div/div/div/ul/li[17]/a"));
+		product.click();
+		Thread.sleep(1000);
+
+		// CLICK Edit the product
+		WebElement edit_product = driver.findElement(By.xpath("//*[@id=\"tablecontents\"]/tr[5]/td[8]/form/a"));
+		edit_product.click();
+		Thread.sleep(2000);
+//
+//		WebElement name = driver.findElement(By.name("name"));
+//		name.sendKeys("Butter");
+//		// SELECT category
+//		Select parent_category = new Select(driver.findElement(By.name("category_id")));
+//		parent_category.selectByIndex(1);
+//		Thread.sleep(000);
+//		// SELECT product type
+//		Select product_type = new Select(driver.findElement(By.name("product_type")));
+//		product_type.selectByIndex(1);
+//		Thread.sleep(1000);
+//
+//		// upload image
+//		WebElement upload_image1 = driver.findElement(By.xpath("//*[@id=\"image\"]"));
+//		upload_image1.sendKeys("C:\\Users\\kirub\\Desktop\\Projects\\Aram Milk\\Aram Images\\butter.jpeg");
+//		Thread.sleep(2000);
+//
+//		// SELECT Stock
+//		Select stock_type = new Select(driver.findElement(By.name("stock")));
+//		stock_type.selectByIndex(1);
+//		Thread.sleep(1000);
+//
+//		// SELECT status type
+//		Select status_type = new Select(driver.findElement(By.name("status")));
+//		status_type.selectByIndex(1);
+//		Thread.sleep(1000);
+
+		// Product short description
+//		WebElement short_desc = driver.findElement(By.xpath("//*[@id=\"tinymce\"]"));
+//		short_desc.click();
+//		short_desc.sendKeys("butter");
+//		// Product Long description
+//		WebElement long_desc = driver.findElement(By.xpath("//*[@id=\"mce_2_ifr\"]"));
+//		long_desc.click();
+//		long_desc.sendKeys("butter");
+//		Thread.sleep(1000);
+		// Stock active/inactive
+
+		// Click Save
+//		Thread.sleep(2000);
+//		WebElement click_save = driver.findElement(By.xpath(
+//				"/html/body/div[1]/div/div[2]/div[2]/div/div/div/div/div/div/div[1]/div[2]/div/div/form/div[4]/div/button"));
+//		click_save.click();
+		// ----------------------------------------------------------------------------------
+
+		// click INVENTORY
+		WebElement inventory = driver.findElement(By.xpath(
+				"/html/body/div[1]/div/div[2]/div[2]/div[1]/div/div/div/div/div/div[2]/div/div[1]/div[2]/div/div/div/div[2]/ul/li[2]/a"));
+		inventory.click();
+		Thread.sleep(1000);
+		// click inventory add
+//		WebElement inventory_add = driver.findElement(By.xpath(
+//				"/html/body/div[1]/div/div[2]/div[2]/div[1]/div/div/div/div/div/div[1]/div[1]/div/div[2]/div/div/ul/li/div/a"));
+//		inventory_add.click();
+//		Thread.sleep(2000);
+		// select zone
+//				Select inventory_zone = new Select(driver.findElement(By.name("zone_id")));
+//				inventory_zone.selectByIndex(1);
+//				Thread.sleep(1000);
+//				// enter mrp
+//				WebElement inventory_mrp = driver.findElement(By.name("mrp_price"));
+//				inventory_mrp.sendKeys("150");
+//				Thread.sleep(1000);
+//				// enter sales price
+//				WebElement inventory_sale_price = driver.findElement(By.name("sales_price"));
+//				inventory_sale_price.sendKeys("100");
+//				Thread.sleep(2000);
+//				WebElement save_price = driver
+//						.findElement(By.xpath("//*[@id=\"createpackage\"]/div/div/div[2]/form/div[2]/div/button"));
+//				save_price.click();
+
+		// Click edit
+		WebElement inventory_edit = driver.findElement(By.xpath(
+				"/html/body/div[1]/div/div[2]/div[2]/div[1]/div/div/div/div/div/div[1]/div[2]/div/div[3]/div[1]/div/div[2]/div[5]/ul/li/div/a"));
+		inventory_edit.click();
+		Thread.sleep(2000);
+		// click edit details
+		WebElement inventory_editdetails = driver.findElement(By.xpath("//*[@id=\"edit\"]"));
+		inventory_editdetails.click();
+		Thread.sleep(2000);
+		// select zone
+		Select inventory_zone1 = new Select(driver.findElement(By.id("zone_data")));
+		inventory_zone1.selectByIndex(2);
+		Thread.sleep(1000);
+		// enter mrp
+		WebElement inventory_mrp1 = driver.findElement(By.id("mrp_data"));
+		inventory_mrp1.clear();
+		inventory_mrp1.sendKeys("50");
+		Thread.sleep(1000);
+		// enter sales price
+		WebElement inventory_sale_price1 = driver.findElement(By.id("sales_data"));
+		inventory_sale_price1.clear();
+		inventory_sale_price1.sendKeys("40");
+		Thread.sleep(2000);
+		WebElement save_price1 = driver
+				.findElement(By.xpath("//*[@id=\"edit-modal\"]/div[2]/div/button"));
+		save_price1.click();
+
+		// --------------------------------------------------------------------------------------
+		// Order
+		// click order
+//		WebElement order = driver.findElement(By.xpath(
+//				"/html/body/div[1]/div/div[2]/div[2]/div/div/div/div/div/div/div[2]/div/div[1]/div[2]/div/div/div/div[2]/ul/li[3]/a"));
+//		order.click();
+//		Thread.sleep(2000);
+//		
+		// --------------------------------------------------------------------------------------
+		// Gallery
+		// click order
+//				WebElement gallery = driver.findElement(By.xpath(
+//						"/html/body/div[1]/div/div[2]/div[2]/div[1]/div/div/div/div/div/div[2]/div/div[1]/div[2]/div/div/div/div[2]/ul/li[4]/a"));
+//				gallery.click();
+//				Thread.sleep(1000);
+//				
+//				// upload image
+//				WebElement upload_gallery = driver.findElement(By.xpath("//*[@id=\"image-upload\"]"));
+//				upload_gallery.click();
+//				Thread.sleep(2000);
+
+		Thread.sleep(4000);
+		driver.quit();
+
+	}
+
+}

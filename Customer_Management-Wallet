@@ -1,0 +1,44 @@
+package cm_Customers;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Wallet {
+
+	public static void main(String[] args) throws Exception {
+		System.setProperty("webdriver.chrome.driver", "C:\\Users\\kirub\\Desktop\\Selenium Files\\chromedriver_win32\\chromedriver.exe");
+		WebDriver driver=new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.get("https://phpstack-783031-3067981.cloudwaysapps.com/public/admin/login");
+		WebElement username=driver.findElement(By.name("email"));
+		username.sendKeys("admin@arammilk.com");
+		WebElement password=driver.findElement(By.name("password"));
+		password.sendKeys("-_pPxRU#ex8Mgk3=");
+		WebElement loginbutton=driver.findElement(By.xpath("/html/body/div/div/div[1]/form/button"));
+		loginbutton.click();
+		Thread.sleep(3000);
+		WebElement customers=driver.findElement(By.xpath("/html/body/div[1]/div/div[1]/div[2]/div/div/div[1]/div[2]/div/div/div/ul/li[19]/a"));
+		customers.click();
+		Thread.sleep(1000);
+		WebElement customerclick=driver.findElement(By.xpath("/html/body/div[1]/div/div[2]/div[2]/div/div/div/div[2]/div/div/div[2]/div/div[2]/div[2]/a"));
+		customerclick.click();
+		
+		WebElement wallet=driver.findElement(By.xpath("/html/body/div[1]/div/div[2]/div[2]/div/div/div/div/div/div/div/div[2]/div/div[1]/div[2]/div/div/div/div[3]/ul/li[5]/a"));
+		wallet.click();
+		WebElement addamount=driver.findElement(By.xpath("/html/body/div[1]/div/div[2]/div[2]/div/div/div/div/div/div/div/div[1]/div[1]/div/a"));
+		addamount.click();
+		Thread.sleep(2000);
+		WebElement amount=driver.findElement(By.name("amount"));
+		amount.click();
+		amount.sendKeys("101");
+		Thread.sleep(2000);
+
+		WebElement submit=driver.findElement(By.xpath("//*[@id=\"walletMoneyAddForm\"]/div/button"));
+		submit.click();
+		Thread.sleep(4000);
+		driver.quit();
+	}
+
+}

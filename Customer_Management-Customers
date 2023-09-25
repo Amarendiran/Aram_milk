@@ -1,0 +1,69 @@
+package cm_Customers;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
+
+public class Add_Customer {
+
+	public static void main(String[] args) throws Exception {
+		System.setProperty("webdriver.chrome.driver", "C:\\Users\\kirub\\Desktop\\Selenium Files\\chromedriver_win32\\chromedriver.exe");
+		WebDriver driver=new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.get("https://phpstack-783031-3067981.cloudwaysapps.com/public/admin/login");
+		WebElement username=driver.findElement(By.name("email"));
+		username.sendKeys("admin@arammilk.com");
+		WebElement password=driver.findElement(By.name("password"));
+		password.sendKeys("-_pPxRU#ex8Mgk3=");
+		WebElement loginbutton=driver.findElement(By.xpath("/html/body/div/div/div[1]/form/button"));
+		loginbutton.click();
+		Thread.sleep(3000);
+		WebElement customers=driver.findElement(By.xpath("/html/body/div[1]/div/div[1]/div[2]/div/div/div[1]/div[2]/div/div/div/ul/li[19]/a"));
+		customers.click();
+		Thread.sleep(1000);
+		WebElement addcustomer=driver.findElement(By.xpath("/html/body/div[1]/div/div[2]/div[2]/div/div/div/div[1]/div/div[2]/div/div/ul/li/a"));
+		addcustomer.click();
+		Thread.sleep(1000);
+		
+		WebElement addusername=driver.findElement(By.name("name"));
+		addusername.sendKeys("KP SAMY");
+		WebElement email=driver.findElement(By.name("email"));
+		email.sendKeys("admin@arammilk.com");
+		WebElement phonenumber=driver.findElement(By.name("phone"));
+		phonenumber.sendKeys("9632587410");
+		WebElement address1=driver.findElement(By.name("address1"));
+		address1.sendKeys("CodeTez Technologies Private Limited,");
+		WebElement address2=driver.findElement(By.name("address2"));
+		address2.sendKeys("No.4, Janaki Complex, Sardar Patel Road,Adyar");
+		WebElement address3=driver.findElement(By.name("address3"));
+		address3.sendKeys("Near GRT Jewelers");
+		WebElement lat=driver.findElement(By.name("lat"));
+		lat.sendKeys("13.006587151804549");
+		WebElement lon=driver.findElement(By.name("lon"));
+		lon.sendKeys("80.25379785307953");
+		WebElement wallet=driver.findElement(By.name("amount"));
+		wallet.sendKeys("200");
+		Select product=new Select(driver.findElement(By.name("product_id")));
+		product.selectByIndex(1);
+		WebElement startdate=driver.findElement(By.name("start_date"));
+		startdate.clear();
+		startdate.sendKeys("2023-08-14");
+		WebElement enddate=driver.findElement(By.name("end_date"));
+		enddate.clear();
+		enddate.sendKeys("2023-08-31");
+		WebElement quantity=driver.findElement(By.name("quantity"));
+		quantity.clear();
+		quantity.sendKeys("1");
+		Thread.sleep(2000);
+		WebElement submit=driver.findElement(By.xpath("//*[@id=\"user-form\"]/div/div[14]/div/button"));
+		submit.click();
+		
+		Thread.sleep(4000);
+//		driver.quit();
+		
+		
+	}
+
+}

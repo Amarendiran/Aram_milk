@@ -1,0 +1,91 @@
+package order_management;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
+
+public class Order_Assign {
+
+	public static void main(String[] args) throws Exception {
+		System.setProperty("webdriver.chrome.driver",
+				"C:\\Users\\kirub\\Desktop\\Selenium Files\\chromedriver_win32\\chromedriver.exe");
+		WebDriver driver = new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.get("https://phpstack-783031-3067981.cloudwaysapps.com/public/admin/login");
+		WebElement username = driver.findElement(By.name("email"));
+		username.sendKeys("admin@arammilk.com");
+		WebElement password = driver.findElement(By.name("password"));
+		password.sendKeys("-_pPxRU#ex8Mgk3=");
+		WebElement loginbutton = driver.findElement(By.xpath("/html/body/div/div/div[1]/form/button"));
+		loginbutton.click();
+		Thread.sleep(3000);
+		// CLICK order Assign BUTTON
+		WebElement order_assign = driver.findElement(
+				By.xpath("/html/body/div[1]/div/div[1]/div[2]/div/div/div[1]/div[2]/div/div/div/ul/li[10]/a"));
+		order_assign.click();
+		Thread.sleep(1000);
+
+		// SELECT WAREHOUSE
+		Select warehouse = new Select(driver.findElement(By.name("warehouse_id")));
+		warehouse.selectByIndex(1);
+		Thread.sleep(1000);
+		// SELECT ZONE
+		Select zone = new Select(driver.findElement(By.name("zone_id[]")));
+		zone.selectByIndex(1);
+		Thread.sleep(1000);
+		// select delivery partner
+		Select deliverypartner = new Select(driver.findElement(By.name("delivery_partner_id")));
+		deliverypartner.selectByIndex(1);
+		Thread.sleep(1000);
+
+		// select assign delivery agent
+		WebElement assign_delivery_agent = driver.findElement(By.xpath(
+				"/html/body/div[1]/div/div[2]/div[2]/div[1]/div/div/div[2]/div/div/div[1]/div/form/div/div[4]/div/div/ul/li/a"));
+		assign_delivery_agent.click();
+		Thread.sleep(3000);
+		WebElement assign_confirmation = driver.findElement(By.xpath("/html/body/div[3]/div/div[3]/div[2]/button"));
+		assign_confirmation.click();
+		Thread.sleep(2000);
+		
+		// bottle not received
+		WebElement bottle_received = driver.findElement(By.xpath(
+				"/html/body/div[1]/div/div[2]/div[2]/div[1]/div/div/div[2]/div/div/div[2]/div/div[2]/div[10]/a"));
+		bottle_received.click();
+		Thread.sleep(3000);
+
+		// received confirmation alert
+		WebElement click_ok = driver.findElement(By.xpath("/html/body/div[3]/div/div[3]/div[2]/button"));
+		click_ok.click();
+		Thread.sleep(1000);
+
+		// delivery partner assign
+		WebElement partner_assign = driver.findElement(By.xpath(
+				"/html/body/div[1]/div/div[2]/div[2]/div[1]/div/div/div[2]/div/div/div[2]/div/div[2]/div[11]/button"));
+		partner_assign.click();
+		Thread.sleep(1000);
+
+		// select delivery agent
+		Select delivery_agent = new Select(driver.findElement(By.name("delivery_id")));
+		delivery_agent.selectByIndex(1);
+		Thread.sleep(1000);
+
+		// click submit
+		WebElement submit = driver.findElement(By.xpath("//*[@id=\"addDelivery\"]/div[3]/button"));
+		submit.click();
+		Thread.sleep(1000);
+
+		// Select Action menu
+		Select action = new Select(driver.findElement(By.id("status0")));
+		action.selectByIndex(1);
+		Thread.sleep(1000);
+
+		// confirmation alert
+		WebElement status_confirmation = driver.findElement(By.xpath("/html/body/div[3]/div/div[3]/div[2]/button"));
+		status_confirmation.click();
+		Thread.sleep(4000);
+		driver.quit();
+	}
+
+}

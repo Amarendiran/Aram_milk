@@ -1,0 +1,74 @@
+package reports;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
+
+public class Orders_report {
+
+	public static void main(String[] args) throws Exception {
+		System.setProperty("webdriver.chrome.driver",
+				"C:\\Users\\kirub\\Desktop\\Selenium Files\\chromedriver_win32\\chromedriver.exe");
+		WebDriver driver = new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.get("https://phpstack-783031-3067981.cloudwaysapps.com/public/admin/login");
+		WebElement username = driver.findElement(By.name("email"));
+		username.sendKeys("admin@arammilk.com");
+		WebElement password = driver.findElement(By.name("password"));
+		password.sendKeys("-_pPxRU#ex8Mgk3=");
+		WebElement loginbutton = driver.findElement(By.xpath("/html/body/div/div/div[1]/form/button"));
+		loginbutton.click();
+		Thread.sleep(3000);
+		// CLICK order report
+		WebElement order_report = driver.findElement(
+				By.xpath("/html/body/div[1]/div/div[1]/div[2]/div/div/div[1]/div[2]/div/div/div/ul/li[13]/a"));
+		order_report.click();
+		Thread.sleep(1000);
+
+		// Date
+//		WebElement start_date = driver.findElement(By.name("start_date"));
+//		start_date.sendKeys("10-07-2023");
+//		WebElement end_date = driver.findElement(By.name("end_date"));
+//		end_date.sendKeys("18-07-2023");
+//		// SELECT order type
+		Select order_type = new Select(driver.findElement(By.name("order_type")));
+		order_type.selectByIndex(1);
+		Thread.sleep(1000);
+//		// SELECT WAREHOUSE
+//		Select warehouse = new Select(driver.findElement(By.name("warehouse_id")));
+//		warehouse.selectByIndex(1);
+//		Thread.sleep(1000);
+//		// SELECT ZONE
+//		Select zone = new Select(driver.findElement(By.name("zone_id")));
+//		zone.selectByIndex(0);
+//		Thread.sleep(1000);
+//		// SELECT delivery partner
+//		Select delivery_partner = new Select(driver.findElement(By.name("delivery_id")));
+//		delivery_partner.selectByIndex(0);
+//		Thread.sleep(1000);
+		// SELECT ZONE
+		Select category = new Select(driver.findElement(By.name("category_id")));
+		category.selectByIndex(1);
+		Thread.sleep(1000);
+		// SELECT ZONE
+		Select product = new Select(driver.findElement(By.name("product_id")));
+		product.selectByIndex(1);
+		Thread.sleep(1000);
+		// Search
+		WebElement search = driver.findElement(By.xpath("/html/body/div[1]/div/div[2]/div[2]/div/div/div/div[2]/div/div/form/div/div[8]/div[1]/button"));
+		search.click();
+		Thread.sleep(3000);
+		//export
+		WebElement export = driver.findElement(By.xpath("/html/body/div[1]/div/div[2]/div[2]/div/div/div/div[3]/div/div/div[1]/div/a"));
+		export.click();
+		Thread.sleep(3000);
+		// Clear
+		WebElement clear = driver.findElement(By.xpath("/html/body/div[1]/div/div[2]/div[2]/div/div/div/div[2]/div/div/form/div/div[8]/div[2]/a"));
+		clear.click();
+		Thread.sleep(4000);
+		driver.quit();
+	}
+
+}

@@ -11,6 +11,7 @@ public class Dashboard {
 	public static void main(String[] args) throws Exception {
 		System.setProperty("webdriver.chrome.driver", "C:\\Users\\kirub\\Desktop\\Selenium Files\\chromedriver_win32\\chromedriver.exe");
 		WebDriver driver=new ChromeDriver();
+we
 		driver.manage().window().maximize();
 		driver.get("https://phpstack-783031-3067981.cloudwaysapps.com/public/admin/login");
 		WebElement username=driver.findElement(By.name("email"));
